@@ -4,8 +4,7 @@ STARTING_NUMBERS = [16, 11, 15, 0, 1, 7]
 def solution(n):
     # numbers_spoken contains number-occurence pairs, where occurence
     # is a list containing the turn numbers of up to 2 previous occurences
-    # of number, with the first element being the second most recent occurence,
-    # and the second element being the most recent.
+    # of number, with the last element being the most recent turn of occurence.
     numbers_spoken = {}
 
     for t in range(n):
@@ -16,9 +15,10 @@ def solution(n):
         else:
             occurences = numbers_spoken.get(current_number)
             if occurences:
-                if len(occurences) == 1:
+                length = len(occurences)
+                if length == 1:
                     current_number = 0
-                elif len(occurences) == 2:
+                elif length == 2:
                     current_number = occurences[1] - occurences[0]
                 else:
                     raise Exception("invalid occurences len")
