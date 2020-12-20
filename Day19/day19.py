@@ -1,6 +1,10 @@
-def part1():
+def solution(part):
     rules = read_rules()
     messages = read_messages()
+
+    if part == 2:
+        rules[8] = [[42], [42, 8]]
+        rules[11] = [[42, 31], [42, 11, 31]]
 
     valid_messages = 0
     for msg in messages:
@@ -81,6 +85,6 @@ def satisfy_rule_sequence(msg, rule_seq, rules):
             return satisfy_rule_sequence(rest_msg, rule_seq[1:], rules)
 
 
-
 if __name__ == "__main__":
-    print(part1())
+    print(solution(part=1))
+    print(solution(part=2))
